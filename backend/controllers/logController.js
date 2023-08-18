@@ -4,9 +4,11 @@ module.exports.index = async (req,res) => {
     let log;
     try{
         log = await logsModel.find();
+        res.json(log)
     }
     catch(err){
         console.log(err)
+        res.json({error: err.message})
     }
 
     res.render('Index', { log })
